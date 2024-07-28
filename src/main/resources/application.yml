@@ -2,9 +2,9 @@ spring:
   application:
     name: campaign-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/public
-    username: Postgres
-    password: PASSWORD
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
     show-sql: true
   jpa:
@@ -13,5 +13,5 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        format_sql=true:
+        format_sql: true
       hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect

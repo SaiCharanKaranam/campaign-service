@@ -6,9 +6,25 @@ services:
     container_name: postgres_db
     environment:
       POSTGRES_DB: public
-      POSTGRES_USER: Postgres
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: PASSWORD
     ports:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/public
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: PASSWORD
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
