@@ -1,2 +1,0 @@
-# campaign-service
-assignment
